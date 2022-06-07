@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "mb_button",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Bejil/MB_Button",
+      "state" : {
+        "revision" : "969db05db324aa6ad7f32607fb553a87dd629653",
+        "version" : "1.0.20"
+      }
+    },
+    {
+      "identity" : "mb_textfield",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Bejil/MB_TextField",
+      "state" : {
+        "revision" : "e448b1ab7bcd5f4266c372ef8e1340b90ef3232c",
+        "version" : "1.0.13"
+      }
+    },
+    {
+      "identity" : "snapkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SnapKit/SnapKit.git",
+      "state" : {
+        "revision" : "f222cbdf325885926566172f6f5f06af95473158",
+        "version" : "5.6.0"
+      }
+    }
+  ],
+  "version" : 2
+}
