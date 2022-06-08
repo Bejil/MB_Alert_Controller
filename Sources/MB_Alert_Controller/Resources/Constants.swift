@@ -38,6 +38,12 @@ struct Fonts {
 	struct Content {
 		
 		static let Regular:UIFont = .systemFont(ofSize: Fonts.Size.Default)
+		static let Bold:UIFont = .boldSystemFont(ofSize: Fonts.Size.Default)
+	}
+	
+	struct Button {
+		
+		static let Navigation:UIFont = .boldSystemFont(ofSize: Fonts.Size.Default-1)
 	}
 	
 	struct Title {

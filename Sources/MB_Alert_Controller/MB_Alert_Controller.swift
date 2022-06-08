@@ -386,7 +386,17 @@ public class MB_Alert_Controller: MB_ViewController {
 	}
 	
 	//MARK: - TEXTFIELD
-	
+	public var textFieldTintColor:UIColor = .blue
+	public var textFieldBackgroundColor:UIColor = Colors.Background
+	public var textFieldTextColor = Colors.Text
+	public var textFieldInvalidColor = Colors.Red
+	public var textFieldMandatoryColor = Colors.Red
+	public var textFieldBorderColor = Colors.Text.withAlphaComponent(0.25)
+	public var textFieldPlaceholderColor = Colors.Text.withAlphaComponent(0.5)
+	public var textFieldFont = Fonts.Content.Regular
+	public var textFieldPlaceholderFont = Fonts.Content.Regular
+	public var textFieldMandatoryFont = Fonts.Content.Bold
+	public var textFieldToolbarFont = Fonts.Button.Navigation
 	@discardableResult public func addTextField() -> MB_TextField {
 		
 		let textField:MB_TextField = .init()
@@ -395,14 +405,17 @@ public class MB_Alert_Controller: MB_ViewController {
 	}
 	
 	//MARK: - BUTTON
-	public var buttonStyle:MB_Button_Style = .solid
 	public var buttonTintColor:UIColor = .blue
+	public var buttonTitleFont:UIFont = .boldSystemFont(ofSize: Fonts.Size.Default+2)
+	public var buttonSubtitleFont:UIFont = .systemFont(ofSize: Fonts.Size.Default-1)
 	@discardableResult private func getButton(title:String, image:UIImage? = nil, handler:((MB_Button?)->Void)? = nil) -> MB_Button {
 		
-		let button:MB_Button = .init(style: buttonStyle, title: title, image: image) { button in
+		let button:MB_Button = .init(style: .solid, title: title, image: image) { button in
 			
 			handler?(button)
 		}
+		button.titleFont = buttonTitleFont
+		button.subtitleFont = buttonSubtitleFont
 		button.tintColor = buttonTintColor
 		return button
 	}
