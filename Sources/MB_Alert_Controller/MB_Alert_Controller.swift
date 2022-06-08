@@ -395,92 +395,75 @@ public class MB_Alert_Controller: MB_ViewController {
 	}
 	
 	//MARK: - BUTTON
-	
-	public enum MB_Alert_Controller_Button {
+	public var buttonStyle:MB_Button_Style = .solid
+	public var buttonTintColor:UIColor = .blue
+	@discardableResult private func getButton(title:String, image:UIImage? = nil, handler:((MB_Button?)->Void)? = nil) -> MB_Button {
 		
-		case Apply
-		case Default
-		case Cancel
-		case Destructive
-	}
-	@discardableResult private func getButton(style:MB_Alert_Controller_Button = .Default, title:String, image:UIImage? = nil, handler:((MB_Button?)->Void)? = nil) -> MB_Button {
-		
-		let button:MB_Button = .init(title: title, image: image)
-		if style == .Apply || style == .Default || style == .Destructive {
-			
-			button.style = .solid
-			
-			if style == .Destructive {
-				
-				button.tintColor = Colors.Red
-			}
-		}
-		else if style == .Cancel {
-			
-			button.style = .transparent
-			button.contentInsets = .init(top: UI.Margins/3, leading: 1.5*UI.Margins, bottom: UI.Margins/3, trailing: 1.5*UI.Margins)
-		}
-		button.action = { button in
+		let button:MB_Button = .init(style: buttonStyle, title: title, image: image) { button in
 			
 			handler?(button)
 		}
-		
+		button.tintColor = buttonTintColor
 		return button
 	}
 	@discardableResult public func addCancelButton(handler:((MB_Button?)->Void)? = nil) -> MB_Button {
 		
-		return addButton(style: .Cancel, title: "Annuler", image: nil, handler: { [weak self] button in
+		let button = addButton(title: "Annuler", handler:  { [weak self] button in
 			
 			self?.dismiss({
 				
 				handler?(button)
 			})
 		})
+		button.style = .transparent
+		return button
 	}
 	@discardableResult public func addDismissButton(handler:((MB_Button?)->Void)? = nil) -> MB_Button {
 		
-		return addButton(style: .Cancel, title: "Ok", image: nil, handler:  { [weak self] button in
+		let button = addButton(title: "Ok", handler:  { [weak self] button in
 			
 			self?.dismiss({
 				
 				handler?(button)
 			})
 		})
+		button.style = .transparent
+		return button
 	}
-	@discardableResult public func addButton(style:MB_Alert_Controller_Button = .Default, title:String, image:UIImage? = nil, handler:((MB_Button?)->Void)? = nil) -> MB_Button {
+	@discardableResult public func addButton(title:String, image:UIImage? = nil, handler:((MB_Button?)->Void)? = nil) -> MB_Button {
 		
-		let button:MB_Button = getButton(style: style, title: title, image: image, handler: handler)
-		
+		let button:MB_Button = getButton(title: title, image: image, handler: handler)
 		add(view: button)
-		
 		return button
 	}
 	@discardableResult public func addStickyCancelButton(handler:((MB_Button?)->Void)? = nil) -> MB_Button {
 		
-		return addStickyButton(style: .Cancel, title: "Annuler", image: nil, handler: { [weak self] button in
+		let button = addStickyButton(title: "Annuler", handler:  { [weak self] button in
 			
 			self?.dismiss({
 				
 				handler?(button)
 			})
 		})
+		button.style = .transparent
+		return button
 	}
 	@discardableResult public func addStickyDismissButton(handler:((MB_Button?)->Void)? = nil) -> MB_Button {
 		
-		return addStickyButton(style: .Cancel, title: "Ok", image: nil, handler:  { [weak self] button in
+		let button = addStickyButton(title: "Ok", handler:  { [weak self] button in
 			
 			self?.dismiss({
 				
 				handler?(button)
 			})
 		})
+		button.style = .transparent
+		return button
 	}
-	@discardableResult public func addStickyButton(style:MB_Alert_Controller_Button = .Default, title:String, image:UIImage? = nil, handler:((MB_Button?)->Void)? = nil) -> MB_Button {
+	@discardableResult public func addStickyButton(title:String, image:UIImage? = nil, handler:((MB_Button?)->Void)? = nil) -> MB_Button {
 		
-		let button:MB_Button = getButton(style: style, title: title, image: image, handler: handler)
-		
+		let button:MB_Button = getButton(title: title, image: image, handler: handler)
 		stickyFooterStackView.addArrangedSubview(button)
-		
 		return button
 	}
 	
@@ -703,6 +686,8 @@ public class MB_Alert_Controller: MB_ViewController {
 		
 		updatePanGestureIndicatorViewBackgroundColor()
 		updateTitleStackView()
+		
+		setUp()
 	}
 	
 	required init?(coder: NSCoder) {
@@ -716,6 +701,10 @@ public class MB_Alert_Controller: MB_ViewController {
 		
 		containerViewShadowColor = { containerViewShadowColor }()
 		updatePanGestureIndicatorViewBackgroundColor()
+	}
+	
+	public func setUp() {
+		
 	}
 	
 	private func manageAlertAnimations(_ animations:[MB_Alert_Controller_Alert_Animation]) {
