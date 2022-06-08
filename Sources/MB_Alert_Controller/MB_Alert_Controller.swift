@@ -440,6 +440,7 @@ open class MB_Alert_Controller: MB_ViewController {
 			})
 		})
 		button.style = .transparent
+		button.contentInsets = .init(top: button.contentInsets.top/2, leading: button.contentInsets.leading, bottom: button.contentInsets.bottom/2, trailing: button.contentInsets.trailing)
 		return button
 	}
 	@discardableResult public func addDismissButton(handler:((MB_Button?)->Void)? = nil) -> MB_Button {
@@ -452,6 +453,7 @@ open class MB_Alert_Controller: MB_ViewController {
 			})
 		})
 		button.style = .transparent
+		button.contentInsets = .init(top: button.contentInsets.top/2, leading: button.contentInsets.leading, bottom: button.contentInsets.bottom/2, trailing: button.contentInsets.trailing)
 		return button
 	}
 	@discardableResult public func addButton(title:String, image:UIImage? = nil, handler:((MB_Button?)->Void)? = nil) -> MB_Button {
@@ -470,6 +472,7 @@ open class MB_Alert_Controller: MB_ViewController {
 			})
 		})
 		button.style = .transparent
+		button.contentInsets = .init(top: button.contentInsets.top/2, leading: button.contentInsets.leading, bottom: button.contentInsets.bottom/2, trailing: button.contentInsets.trailing)
 		return button
 	}
 	@discardableResult public func addStickyDismissButton(handler:((MB_Button?)->Void)? = nil) -> MB_Button {
@@ -482,6 +485,7 @@ open class MB_Alert_Controller: MB_ViewController {
 			})
 		})
 		button.style = .transparent
+		button.contentInsets = .init(top: button.contentInsets.top/2, leading: button.contentInsets.leading, bottom: button.contentInsets.bottom/2, trailing: button.contentInsets.trailing)
 		return button
 	}
 	@discardableResult public func addStickyButton(title:String, image:UIImage? = nil, handler:((MB_Button?)->Void)? = nil) -> MB_Button {
@@ -1051,12 +1055,16 @@ open class MB_Alert_Controller: MB_ViewController {
 		self.preferredContentSize = CGSize(width: UI.MainController.view.frame.size.width, height: newItems.reduce(0, +))
 	}
 	
+	public var errorImage:String?
 	public func present(_ error:Error) {
 		
 		tintColor = Colors.Red
 		titleImageView.image = UIImage(systemName: "exclamationmark.circle.fill")
 		title = "Attention"
-		add(image: UIImage(named: "error_placeholder"))
+		if let errorImage = errorImage {
+			
+			add(image: UIImage(named: errorImage))
+		}
 		add(string: error.localizedDescription)
 		if let localizedFailureReason = (error as NSError).localizedFailureReason {
 			
