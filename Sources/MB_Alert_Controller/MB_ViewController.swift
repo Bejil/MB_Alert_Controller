@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class MB_ViewController: UIViewController {
+open class MB_ViewController: UIViewController {
 
 	public var keyboardHeight: CGFloat = 0
 	

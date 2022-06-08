@@ -11,7 +11,7 @@ import MB_TextField
 import MB_Button
 
 /// Creates an alert with specific style, animations and content
-public class MB_Alert_Controller: MB_ViewController {
+open class MB_Alert_Controller: MB_ViewController {
 
 	//MARK: - STYLE
 	
@@ -703,7 +703,7 @@ public class MB_Alert_Controller: MB_ViewController {
 		setUp()
 	}
 	
-	required init?(coder: NSCoder) {
+	required public init?(coder: NSCoder) {
 		
 		fatalError("init(coder:) has not been implemented")
 	}
