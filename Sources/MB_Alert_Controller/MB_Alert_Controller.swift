@@ -716,7 +716,7 @@ open class MB_Alert_Controller: MB_ViewController {
 		updatePanGestureIndicatorViewBackgroundColor()
 	}
 	
-	public func setUp() {
+	open func setUp() {
 		
 	}
 	
