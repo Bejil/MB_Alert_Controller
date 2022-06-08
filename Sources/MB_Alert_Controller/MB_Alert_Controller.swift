@@ -400,6 +400,17 @@ open class MB_Alert_Controller: MB_ViewController {
 	@discardableResult public func addTextField() -> MB_TextField {
 		
 		let textField:MB_TextField = .init()
+		textField.tintColor = textFieldTintColor
+		textField.backgroundColor = textFieldBackgroundColor
+		textField.textColor = textFieldTextColor
+		textField.invalidColor = textFieldInvalidColor
+		textField.mandatoryColor = textFieldMandatoryColor
+		textField.borderColor = textFieldBorderColor
+		textField.placeholderColor = textFieldPlaceholderColor
+		textField.font = textFieldFont
+		textField.placeholderFont = textFieldPlaceholderFont
+		textField.mandatoryFont = textFieldMandatoryFont
+		textField.toolbarFont = textFieldToolbarFont
 		add(view: textField)
 		return textField
 	}
