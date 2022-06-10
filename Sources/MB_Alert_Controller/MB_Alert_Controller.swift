@@ -374,7 +374,7 @@ open class MB_Alert_Controller: MB_ViewController {
 	
 	//MARK: - IMAGE
 	
-	public func add(image :UIImage?, color:UIColor? = nil, heightRatio:CGFloat = 0.4) {
+	@discardableResult public func add(image :UIImage?, color:UIColor? = nil, heightRatio:CGFloat = 0.4) -> UIImageView {
 		
 		let imageView:UIImageView = .init(image: image)
 		imageView.contentMode = .scaleAspectFit
@@ -383,6 +383,7 @@ open class MB_Alert_Controller: MB_ViewController {
 			make.height.equalTo(imageView.snp.width).multipliedBy(heightRatio)
 		}
 		add(view: imageView)
+		return imageView
 	}
 	
 	//MARK: - TEXTFIELD
