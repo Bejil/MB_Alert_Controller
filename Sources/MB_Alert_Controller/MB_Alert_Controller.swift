@@ -586,7 +586,11 @@ open class MB_Alert_Controller: MB_ViewController {
 				
 				let velocity = gestureRecognizer.velocity(in: gestureRecognizer.view)
 				
-				if gestureRecognizer.state == .changed {
+				if gestureRecognizer.state == .began {
+					
+					UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+				}
+				else if gestureRecognizer.state == .changed {
 					
 					let translation  = gestureRecognizer.translation(in: strongSelf.view)
 					
@@ -620,6 +624,8 @@ open class MB_Alert_Controller: MB_ViewController {
 						}
 						else{
 							
+							UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+							
 							UIView.animate(withDuration: strongSelf.animationDuration, delay: 0.0, options: [.curveEaseInOut,.allowUserInteraction]) {
 								
 								strongSelf.containerView.snp.updateConstraints({ (make) in
@@ -638,6 +644,8 @@ open class MB_Alert_Controller: MB_ViewController {
 							strongSelf.dismiss(strongSelf.panGestureHandler)
 						}
 						else{
+							
+							UIImpactFeedbackGenerator(style: .medium).impactOccurred()
 							
 							UIView.animate(withDuration: strongSelf.animationDuration, delay: 0.0, options: [.curveEaseInOut,.allowUserInteraction]) {
 								
@@ -860,6 +868,7 @@ open class MB_Alert_Controller: MB_ViewController {
 			
 			if let strongSelf = self {
 				
+				UIImpactFeedbackGenerator(style: .medium).impactOccurred()
 				UI.MainController.present(strongSelf, animated: animated, completion: {
 					
 					completion?()
@@ -1072,6 +1081,7 @@ open class MB_Alert_Controller: MB_ViewController {
 			add(string: localizedFailureReason)
 		}
 		addDismissButton()
+		UINotificationFeedbackGenerator().notificationOccurred(.error)
 		present()
 	}
 	
@@ -1081,6 +1091,7 @@ open class MB_Alert_Controller: MB_ViewController {
 		
 		let dismissClosure:((Bool)->Void) = { [weak self] animated in
 			
+			UIImpactFeedbackGenerator(style: .medium).impactOccurred()
 			self?.presentingViewController?.dismiss(animated: false, completion: completion)
 		}
 		
