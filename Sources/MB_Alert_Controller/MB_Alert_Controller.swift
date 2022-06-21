@@ -265,25 +265,14 @@ open class MB_Alert_Controller: MB_ViewController {
 		stackView.spacing = UI.Margins
 		return stackView
 	}()
-	public var titleImageViewSize:CGFloat = 2*UI.Margins {
-		
-		didSet {
-			
-			titleImageView.snp.makeConstraints { (make) in
-				make.width.height.equalTo(titleImageViewSize)
-			}
-		}
-	}
 	private lazy var titleImageView:UIImageView = {
 		
 		let imageView:UIImageView = .init(image: titleImageViewImage)
 		imageView.contentMode = .scaleAspectFit
 		imageView.tintColor = titleImageViewColor
 		imageView.isHidden = titleImageViewImage == nil
-		imageView.setContentHuggingPriority(.defaultHigh, for: .vertical)
-		imageView.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
 		imageView.snp.makeConstraints { (make) in
-			make.width.height.equalTo(titleImageViewSize)
+			make.width.height.equalTo(2*UI.Margins)
 		}
 		return imageView
 	}()
@@ -332,8 +321,6 @@ open class MB_Alert_Controller: MB_ViewController {
 		label.textAlignment = titleLabelTextAlignment
 		label.text = title
 		label.numberOfLines = 0
-		label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-		label.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
 		return label
 	}()
 	public var titleLabelFont:UIFont = Fonts.Title.H2 {
