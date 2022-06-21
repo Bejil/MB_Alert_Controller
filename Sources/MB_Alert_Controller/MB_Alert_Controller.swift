@@ -269,7 +269,7 @@ open class MB_Alert_Controller: MB_ViewController {
 		
 		didSet {
 			
-			imageView.snp.makeConstraints { (make) in
+			titleImageView.snp.makeConstraints { (make) in
 				make.width.height.equalTo(titleImageViewSize)
 			}
 		}
