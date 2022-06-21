@@ -231,11 +231,18 @@ open class MB_Alert_Controller: MB_ViewController {
 		
 		return scrollView
 	}()
+	public var contentSpacing:CGFloat = UI.Margins {
+		
+		didSet {
+			
+			contentStackView.spacing = contentSpacing
+		}
+	}
 	private lazy var contentStackView:UIStackView = {
 		
 		let stackView:UIStackView = .init()
 		stackView.axis = .vertical
-		stackView.spacing = UI.Margins
+		stackView.spacing = contentSpacing
 		return stackView
 	}()
 	private lazy var stickyFooterStackView:UIStackView = {
