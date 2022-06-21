@@ -265,6 +265,15 @@ open class MB_Alert_Controller: MB_ViewController {
 		stackView.spacing = UI.Margins
 		return stackView
 	}()
+	public var titleImageViewSize:CGFloat = 2*UI.Margins {
+		
+		didSet {
+			
+			imageView.snp.makeConstraints { (make) in
+				make.width.height.equalTo(titleImageViewSize)
+			}
+		}
+	}
 	private lazy var titleImageView:UIImageView = {
 		
 		let imageView:UIImageView = .init(image: titleImageViewImage)
@@ -272,7 +281,7 @@ open class MB_Alert_Controller: MB_ViewController {
 		imageView.tintColor = titleImageViewColor
 		imageView.isHidden = titleImageViewImage == nil
 		imageView.snp.makeConstraints { (make) in
-			make.width.height.equalTo(2*UI.Margins)
+			make.width.height.equalTo(titleImageViewSize)
 		}
 		return imageView
 	}()
