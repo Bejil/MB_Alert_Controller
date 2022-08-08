@@ -1092,6 +1092,8 @@ open class MB_Alert_Controller: MB_ViewController {
 		present()
 	}
 	
+	public var dismissHandler:(()->Void)?
+	
 	public func dismiss(_ completion:(()->Void)? = nil) {
 		
 		UIApplication.shared.hideKeyboard()
@@ -1099,7 +1101,11 @@ open class MB_Alert_Controller: MB_ViewController {
 		let dismissClosure:((Bool)->Void) = { [weak self] animated in
 			
 			UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-			self?.presentingViewController?.dismiss(animated: false, completion: completion)
+			self?.presentingViewController?.dismiss(animated: false) { [weak self] in
+				
+				self?.dismissHandler?()
+				completion?()
+			}
 		}
 		
 		if style == .Alert {
