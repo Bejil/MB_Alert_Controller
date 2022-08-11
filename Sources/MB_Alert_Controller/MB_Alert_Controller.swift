@@ -427,7 +427,7 @@ open class MB_Alert_Controller: MB_ViewController {
 	public var buttonTintColor:UIColor = .blue
 	public var buttonTitleFont:UIFont = .boldSystemFont(ofSize: Fonts.Size.Default+2)
 	public var buttonSubtitleFont:UIFont = .systemFont(ofSize: Fonts.Size.Default-1)
-	@discardableResult private func getButton(title:String, image:UIImage? = nil, handler:((MB_Button?)->Void)? = nil) -> MB_Button {
+	@discardableResult open func getButton(title:String, image:UIImage? = nil, handler:((MB_Button?)->Void)? = nil) -> MB_Button {
 		
 		let button:MB_Button = .init(style: .solid, title: title, image: image) { button in
 			
