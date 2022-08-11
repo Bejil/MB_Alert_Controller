@@ -148,7 +148,7 @@ open class MB_Alert_Controller: MB_ViewController {
 	
 	//MARK: - CONTAINER
 	
-	private lazy var containerView:UIView = {
+	public lazy var containerView:UIView = {
 		
 		let view:UIView = .init()
 		view.backgroundColor = containerViewBackgroundColor
