@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Bejil/MB_Button",
       "state" : {
-        "revision" : "969db05db324aa6ad7f32607fb553a87dd629653",
-        "version" : "1.0.20"
+        "revision" : "0558a6190e6a9ddb572456185c212debf2d01e5c",
+        "version" : "1.0.21"
       }
     },
     {
