@@ -438,7 +438,7 @@ open class MB_Alert_Controller: MB_ViewController {
 		button.tintColor = buttonTintColor
 		return button
 	}
-	@discardableResult public func addCancelButton(handler:((MB_Button?)->Void)? = nil) -> MB_Button {
+	@discardableResult open func addCancelButton(handler:((MB_Button?)->Void)? = nil) -> MB_Button {
 		
 		let button = addButton(title: "Annuler", handler:  { [weak self] button in
 			
@@ -451,7 +451,7 @@ open class MB_Alert_Controller: MB_ViewController {
 		button.contentInsets = .init(top: button.contentInsets.top/2, leading: button.contentInsets.leading, bottom: button.contentInsets.bottom/2, trailing: button.contentInsets.trailing)
 		return button
 	}
-	@discardableResult public func addDismissButton(handler:((MB_Button?)->Void)? = nil) -> MB_Button {
+	@discardableResult open func addDismissButton(handler:((MB_Button?)->Void)? = nil) -> MB_Button {
 		
 		let button = addButton(title: "Ok", handler:  { [weak self] button in
 			
